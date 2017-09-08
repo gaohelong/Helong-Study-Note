@@ -1,4 +1,4 @@
-# Blog
+## Note
 
-## CSS3
+### CSS3
 [Flex](https://gaohelong.github.io/css3/flex.html)

@@ -1,2 +1,2 @@
 ## CSS3
-[Flex](https://gaohelong.github.io/css3/flex.md)
+[Flex](https://gaohelong.github.io/css3/flex.html)

@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>html代码规范</title>
+    <title>html规范</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="./assets/css/main.css" rel="stylesheet">
   </head>
@@ -13,14 +13,143 @@
       <section class="hd">
         <a href="./js.html" class="row">js规范</a>
         <a href="./css.html" class="row">css规范</a>
-        <a href="./html.html" class="row">html规范</a>
+        <a href="./html.html" class="row active">html规范</a>
         <a href="./name.html" class="row">命名规范</a>
         <a href="./image.html" class="row">图片规范</a>
       </section>
 
-      <section class="main">
-        前端工程狮
-      </section>
+      <ul class="main">
+        <li class="title-s1">html规范</li>
+        <li class="row-s1">所有功能均有html注释</li>
+        <li class="row-s1">使用空格代替tab</li>
+        <li class="row-s1">代码缩紧使用2个空格</li>
+        <li class="title-s2">html结构要简单清晰</li>
+        <li class="title-s2">标签使用时要注意语义化</li>
+        <li class="row-pre">
+<pre>
+/* 文章段落 */
+&lt;p&gt;&lt;/p&gt;
+
+/* 链接 */
+&lt;a&gt;&lt;/a&gt;
+</pre>
+        </li>
+        <li class="title-s2">标签使用时要注意块级和内联</li>
+        <li class="row-pre">
+<pre>
+/* 块级 */
+&lt;div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+
+/* 内联 */
+&lt;span&gt;&lt;/span&gt;
+</pre>
+        </li>
+        <li class="title-s2">单行注释</li>
+        <li class="row-pre">
+<pre>
+&lt;!-- Comment Text --&gt;
+&lt;div&gt;...&lt;/div&gt;
+</pre>
+        </li>
+        <li class="title-s2">模块注释</li>
+        <li class="row-pre">
+<pre>
+&lt;!-- S Comment Text A --&gt;	
+&lt;div class="mod_a"&gt;
+    ...
+&lt;/div&gt;
+&lt;!-- E Comment Text A --&gt;
+</pre>
+        </li>
+        <li class="title-s2">HTML5标准模版</li>
+        <li class="row-pre">
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;HTML5标准模版&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        </li>
+        <li class="title-s2">移动端标准模版</li>
+        <li class="row-pre">
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" &gt;
+&lt;meta name="format-detection" content="telephone=no" &gt;
+&lt;title&gt;移动端HTML模版&lt;/title&gt;
+	
+&lt;!-- S DNS预解析 --&gt;
+&lt;link rel="dns-prefetch" href=""&gt;
+&lt;!-- E DNS预解析 --&gt; 
+
+&lt;!-- S 线上样式页面片，开发请直接取消注释引用 --&gt;
+&lt;!-- #include virtual="" --&gt;
+&lt;!-- E 线上样式页面片 --&gt;
+
+&lt;!-- S 本地调试，根据开发模式选择调试方式，请开发删除 --&gt; 
+&lt;link rel="stylesheet" href="css/index.css" &gt;
+&lt;!-- /本地调试方式 --&gt;
+
+&lt;link rel="stylesheet" href="http://srcPath/index.css" &gt;
+&lt;!-- /开发机调试方式 --&gt;
+&lt;!-- E 本地调试 --&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        </li>
+        <li class="title-s2">PC端标准模版</li>
+        <li class="row-pre">
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="keywords" content="your keywords"&gt;
+&lt;meta name="description" content="your description"&gt;
+&lt;meta name="author" content="author,email address"&gt;
+&lt;meta name="robots" content="index,follow"&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"&gt;
+&lt;meta name="renderer" content="ie-stand"&gt;
+&lt;title&gt;PC端HTML模版&lt;/title&gt;
+
+&lt;!-- S DNS预解析 --&gt; 
+&lt;link rel="dns-prefetch" href=""&gt;
+&lt;!-- E DNS预解析 --&gt; 
+
+&lt;!-- S 线上样式页面片，开发请直接取消注释引用 --&gt;
+&lt;!-- #include virtual="" --&gt;
+&lt;!-- E 线上样式页面片 --&gt;
+
+&lt;!-- S 本地调试，根据开发模式选择调试方式，请开发删除 --&gt; 
+&lt;link rel="stylesheet" href="css/index.css" &gt;
+&lt;!-- /本地调试方式 --&gt;
+
+&lt;link rel="stylesheet" href="http://srcPath/index.css" &gt;
+&lt;!-- /开发机调试方式 --&gt;
+&lt;!-- E 本地调试 --&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        </li>
+      </ul>
     </section>
   </body>
 </html>

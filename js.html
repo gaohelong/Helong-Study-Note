@@ -11,21 +11,381 @@
   <body>
     <section class="container">
       <section class="hd">
-        <a href="./js.html" class="row">js规范</a>
+        <a href="./js.html" class="row active">js规范</a>
         <a href="./css.html" class="row">css规范</a>
         <a href="./html.html" class="row">html规范</a>
         <a href="./name.html" class="row">命名规范</a>
         <a href="./image.html" class="row">图片规范</a>
       </section>
 
-      <section class="main">
-        <p class="title-s1">js代码规范</p>
-        <p class="row-s1">1、使用空格代替tab</p>
-        <p class="row-s1">2、代码缩紧使用2个空格</p>
-        <p class="row-s1">3、变量命名使用驼峰方式, 首字母小写: 例如: userList</p>
-        <p class="row-s1">4、函数命名使用驼峰方式, 首字母小写: 例如: getUserInfo</p>
-        <p class="row-s1">5、变量、函数命名使用英文, 如果英文太长使用简写</p>
-      </section>
+      <ul class="main">
+        <li class="title-s1">js代码规范</li>
+        <li class="row-s1">使用空格代替tab</li>
+        <li class="row-s1">代码缩紧使用2个空格</li>
+        <li class="row-s1">变量命名使用驼峰方式, 首字母小写: 例如: userList</li>
+        <li class="row-s1">函数命名使用驼峰方式, 首字母小写: 例如: getUserInfo</li>
+        <li class="row-s1">变量、函数命名使用英文, 如果英文太长使用简写</li>
+        <li class="title-s2">const、let</li>
+        <li class="row-pre">
+<pre>
+内容不变的使用const定义
+const a = 1;
+
+内容会改变的时候用let定义
+let a = 1;
+if (a == 1) {
+  a = 2;
+}
+</pre>
+        </li>
+        <li class="title-s2">对象</li>
+        <li class="row-pre">
+<pre>
+/* 请使用字面量值创建对象 */
+
+// bad
+const a = new Object{}
+
+// good
+const a = {}
+</pre>
+          </li>
+        <li class="row-pre">
+<pre>
+/* 别使用保留字作为对象的键值 */
+
+// bad
+const a = {
+  default: {},  // default 是保留字
+  common: {}
+}
+
+// good
+const a = {
+  defaults: {},
+  common: {}
+}
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/* 请使用对象方法的简写方式 */
+
+// bad
+const item = {
+  value: 1,
+
+  addValue: function (val) {
+    return item.value + val
+  }
+}
+
+// good
+const item = {
+  value: 1,
+
+  addValue(val) {
+    return item.value + val
+  }
+}
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/* 请使用对象属性值的简写方式 */
+
+const job = 'FrontEnd'
+
+// bad
+const item = {
+  job: job
+}
+
+// good
+const item = {
+  job
+}
+</pre>
+        </li>
+        <li class="title-s2">数组</li>
+        <li class="row-pre">
+<pre>
+/* 请使用字面量值创建数组 */
+
+// bad
+const items = new Array()
+
+// good
+const items = []
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/* 向数组中添加元素时 */
+
+const items = []
+
+// bad
+items[items.length] = 'test'
+
+// good
+items.push('test')
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/* 使用拓展运算符 ... 复制数组 */
+
+const items = [1, 2, 3, 4, 5, 6]
+
+// bad
+const itemsCopy = []
+const len = items.length
+let i
+for (i = 0; i < len; i++) {
+  itemsCopy[i] = items[i]
+}
+
+// good
+itemsCopy = [...items]
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/* 使用数组的 map 等方法时，请使用 return 声明，如果是单一声明语句的情况，可省略 return */
+
+// good
+[1, 2, 3].map(x => {
+  const y = x + 1
+  return x * y
+})
+
+// good
+[1, 2, 3].map(x => x + 1)
+
+// bad
+const flat = {}
+[[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
+  const flatten = memo.concat(item)
+  flat[index] = flatten
+})
+
+// good
+const flat = {}
+[[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
+  const flatten = memo.concat(item)
+  flat[index] = flatten
+  return flatten
+})
+
+// bad
+inbox.filter((msg) => {
+  const { subject, author } = msg
+  if (subject === 'Mockingbird') {
+    return author === 'Harper Lee'
+  } else {
+    return false
+  }
+})
+
+// good
+inbox.filter((msg) => {
+  const { subject, author } = msg
+  if (subject === 'Mockingbird') {
+    return author === 'Harper Lee'
+  }
+
+  return false
+})
+</pre>
+        </li>
+        <li class="title-s2">解构赋值</li>
+        <li class="row-pre">
+<pre>
+/* 当需要使用对象的多个属性时，请使用解构赋值 */
+
+// bad
+function getFullName (user) {
+  const firstName = user.firstName
+  const lastName = user.lastName
+
+  return `${firstName} ${lastName}`
+}
+
+// good
+function getFullName (user) {
+  const { firstName, lastName } = user
+
+  return `${firstName} ${lastName}`
+}
+
+// better
+function getFullName ({ firstName, lastName }) {
+  return `${firstName} ${lastName}`
+}
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/* 当需要使用数组的多个值时，请同样使用解构赋值 */
+
+const arr = [1, 2, 3, 4]
+
+// bad
+const first = arr[0]
+const second = arr[1]
+
+// good
+const [first, second] = arr
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/* 函数需要回传多个值时，请使用对象的解构，而不是数组的解构 */
+
+// bad
+function doSomething () {
+  return [top, right, bottom, left]
+}
+
+// 如果是数组解构，那么在调用时就需要考虑数据的顺序
+const [top, xx, xxx, left] = doSomething()
+
+// good
+function doSomething () {
+  return { top, right, bottom, left }
+}
+
+// 此时不需要考虑数据的顺序
+const { top, left } = doSomething()
+</pre>
+        </li>
+        <li class="title-s2">字符串</li>
+        <li class="row-pre">
+<pre>
+/* 字符串统一使用单引号的形式 '' */
+
+// bad
+const department = "JDC"
+
+// good
+const department = 'JDC'
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/* 字符串太长的时候，请不要使用字符串连接符换行 \，而是使用 + */
+
+const str = '查查实验室 查查实验室 查查实验室' +
+  '查查实验室 查查实验室 查查实验室' +
+  '查查实验室 查查实验室'
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/* 程序化生成字符串时，请使用模板字符串 */
+
+const test = 'test'
+
+// bad
+const str = ['a', 'b', test].join()
+
+// bad
+const str = 'a' + 'b' + test
+
+// good
+const str = `ab${test}`
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-pre">
+<pre>
+/*  */
+</pre>
+        </li>
+        <li class="row-s1"></li>
+        <li class="row-s1"></li>
+        <li class="row-s1"></li>
+      </ul class="main">
     </section>
   </body>
 </html>

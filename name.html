@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>命名规范</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="./assets/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <section class="container">
+      <section class="hd">
+        <a href="./js.html" class="row">js规范</a>
+        <a href="./css.html" class="row">css规范</a>
+        <a href="./html.html" class="row">html规范</a>
+        <a href="./name.html" class="row active">命名规范</a>
+        <a href="./image.html" class="row">图片规范</a>
+      </section>
+
+      <ul class="main">
+        <li class="title-s1">目录命名</li>
+        <li class="row-s1">项目文件夹：projectname</li>
+        <li class="row-s1">样式文件夹：css</li>
+        <li class="row-s1">脚本文件夹：js</li>
+        <li class="row-s1">样式类图片文件夹：img</li>
+        <div class="split-line"></div>
+
+        <li class="title-s1">图片命名</li>
+        <li class="title-s2">命名顺序</li>
+        <li class="title-s3">图片业务（可选） +（mod_）图片功能类别（必选）+ 图片模块名称（可选） + 图片精度（可选）</li>
+        <li class="row-s1">图片业务</li>
+        <li class="row-s2">applet_: 小程序公用</li>
+        <li class="row-s2">applet_wx_: 微信小程序</li>
+        <li class="row-s2">applet_bd_: 百度小程序</li>
+        <li class="row-s2">...</li>
+        <li class="row-s1">图片功能类别</li>
+        <li class="row-s2">icon：模块类固化的图标</li>
+        <li class="row-s2">logo：LOGO类</li>
+        <li class="row-s2">btn：按钮</li>
+        <li class="row-s2">bg：可平铺或者大背景</li>
+        <li class="row-s2">...</li>
+        <li class="row-s1">图片模块名称</li>
+        <li class="row-s2">goodslist：商品列表</li>
+        <li class="row-s2">goodsinfo：商品信息</li>
+        <li class="row-s2">...</li>
+        <li class="row-s1">图片精度</li>
+        <li class="row-s2">普清：@1x</li>
+        <li class="row-s2">Retina：@2x | @3x</li>
+        <li class="row-s2">...</li>
+        <li class="row-s1">示例</li>
+        <li class="row-s2">applet_mod_btn_goodlist@2x.png</li>
+
+        <div class="split-line"></div>
+        <li class="title-s1">JS/CSS文件命名</li>
+        <li class="title-s2">确保文件命名总是以字母开头而不是数字，且字母一律小写，以下划线连接且不带其他标点符号，如：</li>
+        <li class="row-s1">< !-- JS -- ></li>
+        <li class="row-s1">小程序: pages/product/detail.js</li>
+        <li class="row-s1">H5: page/product/detail.js</li>
+        <li class="row-s1">PC: page/product/detail.js</li>
+        <li class="row-s1">< !-- LESS -- ></li>
+        <li class="row-s1">小程序: pages/product/detail.less</li>
+        <li class="row-s1">H5: page/product/detail.less</li>
+        <li class="row-s1">PC: page/product/detail.less</li>
+        <li class="row-s1">样式类图片文件夹：img</li>
+        <div class="split-line"></div>
+
+        <li class="title-s1">ClassName命名</li>
+        <li class="title-s2">ClassName的命名应该尽量精短、明确，必须以字母开头命名，且全部字母为小写，单词之间统一使用横杠 “-” 连接</li>
+        <li class="title-s3">祖先模块不能出现横杠，除了是全站公用模块，如 mod- 系列的命名：</li>
+        <li class="row-pre">
+          <pre>
+            &lt;div class="modulename"&gt;
+              &lt;div class="modulename-info"&gt;
+                &lt;div class="modulename-son"&gt;&lt;div&gt;
+                &lt;div class="modulename-son"&gt;&lt;div&gt;
+                ...
+              &lt;div&gt;
+            &lt;div&gt;
+          </pre>
+        </li>
+        <li class="title-s3">当子孙模块超过4级或以上的时候，可以考虑在祖先模块内具有识辨性的独立缩写作为新的子孙模块</li>
+        <li class="row-pre">
+          <pre>
+            &lt;div class="modulename"&gt;
+              &lt;div class="modulename-cover"&gt;&lt;div&gt;
+              &lt;div class="modulename-info"&gt;
+                &lt;div class="modulename-info-user"&gt;
+                  &lt;div class="modulename-info-user-img"&gt;
+                    &lt;img src="" alt=""&gt;
+                    &lt;!-- 这个时候 miui 为 modulename-info-user-img 首字母缩写--&gt;
+                    &lt;div class="miui-tit"&gt;&lt;div&gt;
+                    &lt;div class="miui-txt"&gt;&lt;div&gt;
+                    ...
+                  &lt;div&gt;
+                &lt;div&gt;
+                &lt;div class="modulename-info-list"&gt;&lt;div&gt;
+              &lt;div&gt;
+            &lt;div&gt;
+          </pre>
+        </li>
+        <li class="row-s1"></li>
+        <li class="row-s1"></li>
+        <div class="split-line"></div>
+
+        <li class="title-s1">ClassName	含义</li>
+        <li class="row-s1">about	关于</li>
+        <li class="row-s1">account	账户</li>
+        <li class="row-s1">arrow	箭头图标</li>
+        <li class="row-s1">article	文章</li>
+        <li class="row-s1">aside	边栏</li>
+        <li class="row-s1">audio	音频</li>
+        <li class="row-s1">avatar	头像</li>
+        <li class="row-s1">bg,background	背景</li>
+        <li class="row-s1">bar	栏（工具类）</li>
+        <li class="row-s1">branding	品牌化</li>
+        <li class="row-s1">crumb,breadcrumbs	面包屑</li>
+        <li class="row-s1">btn,button	按钮</li>
+        <li class="row-s1">caption	标题，说明</li>
+        <li class="row-s1">category	分类</li>
+        <li class="row-s1">chart	图表</li>
+        <li class="row-s1">clearfix	清除浮动</li>
+        <li class="row-s1">close	关闭</li>
+        <li class="row-s1">col,column	列</li>
+        <li class="row-s1">comment	评论</li>
+        <li class="row-s1">community	社区</li>
+        <li class="row-s1">container	容器</li>
+        <li class="row-s1">content	内容</li>
+        <li class="row-s1">copyright	版权</li>
+        <li class="row-s1">current	当前态，选中态</li>
+        <li class="row-s1">default	默认</li>
+        <li class="row-s1">description	描述</li>
+        <li class="row-s1">details	细节</li>
+        <li class="row-s1">disabled	不可用</li>
+        <li class="row-s1">entry	文章，博文</li>
+        <li class="row-s1">error	错误</li>
+        <li class="row-s1">even	偶数，常用于多行列表或表格中</li>
+        <li class="row-s1">fail	失败（提示）</li>
+        <li class="row-s1">feature	专题</li>
+        <li class="row-s1">fewer	收起</li>
+        <li class="row-s1">field	用于表单的输入区域</li>
+        <li class="row-s1">figure	图</li>
+        <li class="row-s1">filter	筛选</li>
+        <li class="row-s1">first	第一个，常用于列表中</li>
+        <li class="row-s1">footer	页脚</li>
+        <li class="row-s1">forum	论坛</li>
+        <li class="row-s1">gallery	画廊</li>
+        <li class="row-s1">group	模块，清除浮动</li>
+        <li class="row-s1">header	页头</li>
+        <li class="row-s1">help	帮助</li>
+        <li class="row-s1">hide	隐藏</li>
+        <li class="row-s1">hightlight	高亮</li>
+        <li class="row-s1">home	主页</li>
+        <li class="row-s1">icon	图标</li>
+        <li class="row-s1">info,information	信息</li>
+        <li class="row-s1">last	最后一个，常用于列表中</li>
+        <li class="row-s1">links	链接</li>
+        <li class="row-s1">login	登录</li>
+        <li class="row-s1">logout	退出</li>
+        <li class="row-s1">logo	标志</li>
+        <li class="row-s1">main	主体</li>
+        <li class="row-s1">menu	菜单</li>
+        <li class="row-s1">meta	作者、更新时间等信息栏，一般位于标题之下</li>
+        <li class="row-s1">module	模块</li>
+        <li class="row-s1">more	更多（展开）</li>
+        <li class="row-s1">msg,message	消息</li>
+        <li class="row-s1">nav,navigation	导航</li>
+        <li class="row-s1">next	下一页</li>
+        <li class="row-s1">nub	小块</li>
+        <li class="row-s1">odd	奇数，常用于多行列表或表格中</li>
+        <li class="row-s1">off	鼠标离开</li>
+        <li class="row-s1">on	鼠标移过</li>
+        <li class="row-s1">output	输出</li>
+        <li class="row-s1">pagination	分页</li>
+        <li class="row-s1">pop,popup	弹窗</li>
+        <li class="row-s1">preview	预览</li>
+        <li class="row-s1">previous	上一页</li>
+        <li class="row-s1">primary	主要</li>
+        <li class="row-s1">progress	进度条</li>
+        <li class="row-s1">promotion	促销</li>
+        <li class="row-s1">rcommd,recommendations	推荐</li>
+        <li class="row-s1">reg,register	注册</li>
+        <li class="row-s1">save	保存</li>
+        <li class="row-s1">search	搜索</li>
+        <li class="row-s1">secondary	次要</li>
+        <li class="row-s1">section	区块</li>
+        <li class="row-s1">selected	已选</li>
+        <li class="row-s1">share	分享</li>
+        <li class="row-s1">show	显示</li>
+        <li class="row-s1">sidebar	边栏，侧栏</li>
+        <li class="row-s1">slide	幻灯片，图片切换</li>
+        <li class="row-s1">sort	排序</li>
+        <li class="row-s1">sub	次级的，子级的</li>
+        <li class="row-s1">submit	提交</li>
+        <li class="row-s1">subscribe	订阅</li>
+        <li class="row-s1">subtitle	副标题</li>
+        <li class="row-s1">success	成功（提示）</li>
+        <li class="row-s1">summary	摘要</li>
+        <li class="row-s1">tab	标签页</li>
+        <li class="row-s1">table	表格</li>
+        <li class="row-s1">txt,text	文本</li>
+        <li class="row-s1">thumbnail	缩略图</li>
+        <li class="row-s1">time	时间</li>
+        <li class="row-s1">tips	提示</li>
+        <li class="row-s1">title	标题</li>
+        <li class="row-s1">video	视频</li>
+        <li class="row-s1">wrap	容器，包，一般用于最外层</li>
+        <li class="row-s1">wrapper	容器，包，一般用于最外层</li>
+        <div class="split-line"></div>
+      </ul>
+    </section>
+  </body>
+</html>
+<script src="./assets/js/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

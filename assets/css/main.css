@@ -1,13 +1,47 @@
 body {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .container {
-    width: 90%;
-    margin-left: 5%;
+  margin: 0 auto;
+  width: 1200px;
 }
 
-.item .title: {
-    font-size: 16px;
-    font-weight: bold;
+.hd {
+  display: flex;
+  padding: 10px 30px 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.row {
+  width: 160px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.main {
+  margin-top: 20px;
+  padding: 20px 30px 30px 30px;
+  min-height: 1000px;
+  font-size: 16px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.title-s1 {
+  margin-bottom: 10px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.row-s1 {
+  font-size: 16px;
+  height: 20px;
+  line-height: 20px;
 }

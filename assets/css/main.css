@@ -65,8 +65,11 @@ body {
 }
 .row-pre {
   margin-left: 26px;
-  font-size: 16px;
   line-height: 30px;
+}
+pre {
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .split-line {

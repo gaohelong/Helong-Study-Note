@@ -25,6 +25,71 @@
         <li class="row-s1">变量命名使用驼峰方式, 首字母小写: 例如: userList</li>
         <li class="row-s1">函数命名使用驼峰方式, 首字母小写: 例如: getUserInfo</li>
         <li class="row-s1">变量、函数命名使用英文, 如果英文太长使用简写</li>
+        <li class="title-s2">公共方法、变量</li>
+        <li class="row-pre">
+<pre>
+/* 公共的方法、全局变量、常量提取出，例如放在来放在common/utils.js中 */
+
+// utils.js
+const formatDate = () => {
+  
+}
+
+export {
+  formatDate
+}
+
+// config.js
+const apiUrl = 'https://www.xxx.com';
+
+export {
+  apiUrl
+}
+</pre>
+        </li>
+        <li class="title-s2">组件化</li>
+        <li class="row-pre">
+<pre>
+超过1个地方使用的均组件化, 注意组件的灵活性.
+</pre>
+        <li class="title-s2">分号</li>
+        <li class="row-pre">
+<pre>
+/* 每行代码结尾使用都需要加上分号 */
+
+// bad
+let a = 1
+
+
+// good
+let a = 1;
+</pre>
+        </li>
+        <li class="title-s2">const、let</li>
+        <li class="row-pre">
+<pre>
+内容不变的使用const定义
+const a = 1;
+
+内容会改变的时候用let定义
+let a = 1;
+if (a == 1) {
+  a = 2;
+}
+</pre>
+        <li class="title-s2">分号</li>
+        <li class="row-pre">
+<pre>
+/* 每行代码结尾使用都需要加上分号 */
+
+// bad
+let a = 1
+
+
+// good
+let a = 1;
+</pre>
+        </li>
         <li class="title-s2">const、let</li>
         <li class="row-pre">
 <pre>
@@ -297,94 +362,220 @@ const str = 'a' + 'b' + test
 const str = `ab${test}`
 </pre>
         </li>
+        <li class="title-s2">函数</li>
         <li class="row-pre">
 <pre>
-/*  */
+/* 请使用函数声明，而不是函数表达式 */
+
+// bad
+const foo = function () {
+  // do something
+}
+
+// good
+function foo () {
+  // do something
+}
 </pre>
         </li>
         <li class="row-pre">
 <pre>
-/*  */
+/* 不要在非函数代码块中声明函数 */
+
+// bad
+if (isUse) {
+  function test () {
+    // do something
+  }
+}
+
+// good
+let test
+if (isUse) {
+  test = () => {
+    // do something
+  }
+}
 </pre>
         </li>
         <li class="row-pre">
 <pre>
-/*  */
+/* 不要使用 arguments，可以选择使用 ... */
+
+// bad
+function test () {
+  const args = Array.prototype.slice.call(arguments)
+  return args.join('')
+}
+
+// good
+function test (...args) {
+  return args.join('')
+}
 </pre>
         </li>
         <li class="row-pre">
 <pre>
-/*  */
+/* 不要更改函数参数的值 */
+
+// bad
+function test (opts) {
+  opts = opts || {}
+}
+
+// good
+function test (opts = {}) {
+  // ...
+}
+</pre>
+        </li>
+        <li class="title-s2">原型</li>
+        <li class="row-pre">
+<pre>
+/* 使用 class，避免直接操作 prototype */
+
+// bad
+function Queue (contents = []) {
+  this._queue = [..contents]
+}
+Queue.prototype.pop = function () {
+  const value = this._queue[0]
+  this._queue.splice(0, 1)
+  return value
+}
+
+// good
+class Queue {
+  constructor (contents = []) {
+    this._queue = [...contents]
+  }
+
+  pop () {
+    const value = this._queue[0]
+    this._queue.splice(0, 1)
+    return value
+  }
+}
+</pre>
+        </li>
+        <li class="title-s2">模块</li>
+        <li class="row-pre">
+<pre>
+/* 使用标准的 ES6 模块语法 import 和 export */
+
+// bad
+const util = require('./util')
+module.exports = util
+
+// good
+import Util from './util'
+export default Util
+
+// better
+import { Util } from './util'
+export default Util
+</pre>
+        </li>
+        <li class="title-s2">对象属性</li>
+        <li class="row-pre">
+<pre>
+/* 使用 . 来访问对象属性 */
+
+const joke = {
+  name: 'haha',
+  age: 28
+}
+
+// bad
+const name = joke['name']
+
+// good
+const name = joke.name
+</pre>
+        </li>
+        <li class="title-s2">变量声明</li>
+        <li class="row-pre">
+<pre>
+/* 声明变量时，请使用 const、let 关键字，如果没有写关键字，变量就会暴露在全局上下文中，这样很可能会和现有变量冲突，另外，也很难明确该变量的作用域是什么。这里推荐使用 const 来声明变量，我们需要避免全局命名空间的污染。 */
+
+// bad
+demo = new Demo()
+
+// good
+const demo = new Demo()
+</pre>
+        </li>
+        <li class="title-s2">Hoisting</li>
+        <li class="row-pre">
+<pre>
+/* var 存在变量提升的情况，即 var 声明会被提升至该作用域的顶部，但是他们的赋值并不会。而 const 和 let 并不存在这种情况，他们被赋予了 Temporal Dead Zones, TDZ */
+
+function example () {
+  console.log(notDefined)   // => throws a ReferenceError
+}
+
+function example () {
+  console.log(declareButNotAssigned)  // => undefined
+  var declaredButNotAssigned = true
+}
+
+function example () {
+  let declaredButNotAssigned
+  console.log(declaredButNotAssigned)   // => undefined
+  declaredButNotAssigned = true
+}
+
+function example () {
+  console.log(declaredButNotAssigned)   // => throws a ReferenceError
+  console.log(typeof declaredButNotAssigned)  // => throws a ReferenceError
+  const declaredButNotAssigned = true
+}
 </pre>
         </li>
         <li class="row-pre">
 <pre>
-/*  */
+/* 匿名函数的变量名会提升，但函数内容不会 */
+
+function example () {
+  console.log(anonymous)  // => undefined
+
+  anonymous()
+
+  var anonymous = function () {
+    console.log('test')
+  }
+}
 </pre>
         </li>
         <li class="row-pre">
 <pre>
-/*  */
+/* 命名的函数表达式的变量名会被提升，但函数名和函数函数内容并不会 */
+
+function example() {
+  console.log(named)  // => undefined
+
+  named()   // => TypeError named is not a function
+
+  superPower()  // => ReferenceError superPower is not defined
+
+  var named = function superPower () {
+    console.log('Flying')
+  }
+}
+
+function example() {
+  console.log(named)  // => undefined
+
+  named()   // => TypeError named is not a function
+
+  var named = function named () {
+    console.log('named')
+  }
+}
 </pre>
         </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-pre">
-<pre>
-/*  */
-</pre>
-        </li>
-        <li class="row-s1"></li>
-        <li class="row-s1"></li>
-        <li class="row-s1"></li>
+        <li class="row-s1">eval()：由于 eval 方法比较 evil，所以我们约定禁止使用该方法</li>
+        <li class="row-s1">with() {}：由于 with 方法会产生神奇的作用域，所以我们也是禁止使用该方法的</li>
       </ul class="main">
     </section>
   </body>
